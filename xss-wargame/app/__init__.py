@@ -13,6 +13,7 @@ def create_app(test_config=None):
     app = Flask(__name__)
     app.config.from_mapping(
         FLAG=os.getenv("FLAG") or f"FL{{{os.urandom(16).hex()}}}",
+        SECRET_KEY=os.getenv("SECRET_KEY") or os.urandom(32),
         INTERNAL_BASE_URL=os.getenv("INTERNAL_BASE_URL", "http://127.0.0.1:8000"),
         MAX_MEMOS=50,
         MAX_MEMO_LENGTH=500,

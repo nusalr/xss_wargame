@@ -1,4 +1,4 @@
-from flask import Blueprint, current_app, jsonify, redirect, render_template, request, url_for
+from flask import Blueprint, current_app, jsonify, redirect, render_template, request, session, url_for
 
 from .bot import BotBusyError, BotTimeoutError, BotVisitError
 
@@ -83,6 +83,7 @@ def submit():
     if request.method == "POST":
         submitted_flag = request.form.get("flag", "").strip()
         if submitted_flag == current_app.config["FLAG"]:
+            session["challenge_solved"] = True
             return redirect(url_for("web.success"))
         incorrect = True
     return render_template("submit.html", incorrect=incorrect)
@@ -90,6 +91,8 @@ def submit():
 
 @web.get("/success")
 def success():
+    if not session.get("challenge_solved"):
+        return redirect(url_for("web.submit"))
     return render_template("success.html")
 
 
