@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Reflect Me · Results{% endblock %}
+{% block content %}
+  <p class="eyebrow">검색 결과</p>
+  <h1>결과</h1>
+  <div class="result-box">
+    <p id="result" class="result"></p>
+  </div>
+  <a class="back-link" href="{{ url_for('web.index') }}">← Search again</a>
+  <script>
+    const resultParam = {{ param | tojson }};
+    document.getElementById("result").innerHTML = "검색 결과: " + resultParam;
+  </script>
+{% endblock %}

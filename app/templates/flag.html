@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Reflect Me · Report{% endblock %}
+{% block content %}
+  <h1>Flag</h1>
+  <label></label>
+  {% if message %}<div class="notice {{ message_kind }}" role="status">{{ message }}</div>{% endif %}
+  <form class="stack" method="post">
+    <label for="param"></label>
+    <textarea id="param" name="param" maxlength="1000" rows="6" placeholder="값을 입력하세요"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

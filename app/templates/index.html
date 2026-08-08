@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}XSS web{% endblock %}
+{% block content %}
+  <p class="lead">Search for anything. Your query will be reflected on the result page.</p>
+  <form class="stack" action="{{ url_for('web.vuln') }}" method="get">
+    <label for="param">Search query</label>
+    <div class="form-row">
+      <input id="param" name="param" type="text" autocomplete="off" placeholder="검색어를 입력하세요.">
+      <button type="submit">검색</button>
+    </div>
+  </form>
+  <div class="quick-links">
+    <a href="{{ url_for('web.memo') }}">memo</a>
+    <a href="{{ url_for('web.flag') }}">Report to admin</a>
+  </div>
+{% endblock %}

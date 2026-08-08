@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}XSS - Congratulations{% endblock %}
+{% block content %}
+  <p class="eyebrow">CHALLENGE COMPLETE</p>
+  <h1>Congratulations!</h1>
+  <p class="lead">정답입니다. DOM-XSS 워게임을 성공적으로 해결했습니다.</p>
+  <a class="back-link" href="{{ url_for('web.index') }}">Back to home</a>
+{% endblock %}

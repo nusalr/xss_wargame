@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}XSS{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="{{ url_for('web.index') }}">XSS</a>
+        <div class="nav-links">
+          <a class="{% if request.endpoint == 'web.index' %}active{% endif %}" href="{{ url_for('web.index') }}">Home</a>
+          <a class="{% if request.endpoint == 'web.memo' %}active{% endif %}" href="{{ url_for('web.memo') }}">Memo</a>
+          <a class="{% if request.endpoint == 'web.flag' %}active{% endif %}" href="{{ url_for('web.flag') }}">Report</a>
+          <a class="{% if request.endpoint == 'web.submit' %}active{% endif %}" href="{{ url_for('web.submit') }}">Submit</a>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <section class="card">
+        {% block content %}{% endblock %}
+      </section>
+    </main>
+  </body>
+</html>

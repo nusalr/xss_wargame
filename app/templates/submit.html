@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}XSS - Submit Flag{% endblock %}
+{% block content %}
+  <p class="eyebrow">FLAG CHECK</p>
+  <h1>Submit Flag</h1>
+  <p class="lead">플래그는 <code>FL{...}</code> 형식입니다. 획득한 플래그를 제출하세요.</p>
+  <form class="stack" method="post">
+    <label for="flag">Flag</label>
+    <input id="flag" name="flag" type="text" autocomplete="off" placeholder="FL{...}" required>
+    <button type="submit">Submit flag</button>
+  </form>
+  {% if incorrect %}
+    <script>
+      alert("플래그가 틀렸습니다.");
+    </script>
+  {% endif %}
+{% endblock %}
